@@ -6,20 +6,20 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
-@Builder
 @Table(name = "companies")
 @Getter
 @Setter
-@AllArgsConstructor @NoArgsConstructor
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+@PrimaryKeyJoinColumn(name = "data_id")
+public class Company extends Data {
     @Column(length = 50)
     private String nameCompny;
-    @Column(length = 70)
-    private String address;
+    @Column(unique = true)
+    private String cuit;
+
     /* TODO: Relations */
     @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
@@ -28,4 +28,11 @@ public class Company {
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
     Set<Person> people = new HashSet<>();
+    @Builder
+    public Company(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String nameCompny, String cuit) {
+        super(id, phoneLine, zipCode, address, province, coutry);
+        this.nameCompny=nameCompny;
+        this.cuit=cuit;
+    }
+
 }

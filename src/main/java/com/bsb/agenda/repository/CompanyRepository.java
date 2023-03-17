@@ -1,9 +1,8 @@
 package com.bsb.agenda.repository;
 
 import com.bsb.agenda.model.entity.Company;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, Long> {
+public interface CompanyRepository extends DataRepository<Company> {
 }

@@ -6,27 +6,32 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
-@Builder
 @Table(name = "people")
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Setter @Getter
+@PrimaryKeyJoinColumn(name = "data_id")
+public class Person extends Data{
     @Column(length = 50)
     private String firstName;
     @Column(nullable = false, length = 50)
     private String lastName;
-    @Column(length = 30)
-    private String phone;
     @Column(unique = true, length = 13)
     private String dni;
-    private String address;
+    @Column(length = 30)
+    private String cell;
+
     /* TODO:Relations*/
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "people")
     private Set<Company> companies = new HashSet<>();
-
+    @Builder
+    public Person(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String firstName, String lastName,String dni, String cell) {
+        super(id, phoneLine, zipCode, address, province, coutry);
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.dni=dni;
+        this.cell=cell;
+    }
 }

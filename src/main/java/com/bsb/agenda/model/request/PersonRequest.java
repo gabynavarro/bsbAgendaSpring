@@ -5,21 +5,32 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter @Setter @Builder
 public class PersonRequest {
 
     private String firstName;
     private String lastName;
-    private String phone;
-    private String dni;
+    private String phoneLine;
+    private String cell;
+    private String zipCode;
     private String address;
+    private String province;
+    private String coutry;
+    private String dni;
+
+
     public static Person toEnty(PersonRequest request){
         return  Person.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .phone(request.getPhone())
-                .dni(request.getDni())
+                .phoneLine(request.getPhoneLine())
+                .cell(request.getCell())
+                .zipCode(request.getZipCode())
                 .address(request.getAddress())
+                .province(request.getProvince())
+                .coutry(request.getCoutry())
+                .dni(request.getDni())
                 .build();
     }
 
