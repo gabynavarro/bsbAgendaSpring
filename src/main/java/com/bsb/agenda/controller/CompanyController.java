@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "/api/v1/company")
+@RequestMapping("/api/v1/company")
 public class CompanyController {
 }
