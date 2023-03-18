@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CompanyPersonResponse {
     private Long id;
-    private String nameCompny;
+    private String nameCompany;
     private String cuit;
     /* Data*/
     private String address;
@@ -21,7 +21,7 @@ public class CompanyPersonResponse {
     public static CompanyPersonResponse toResponse(Company enty){
         return CompanyPersonResponse.builder()
                 .id(enty.getId())
-                .nameCompny(enty.getNameCompny())
+                .nameCompany(enty.getNameCompany())
                 .cuit(enty.getCuit())
                 .address(enty.getAddress())
                 .province(enty.getProvince())

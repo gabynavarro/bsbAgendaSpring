@@ -16,7 +16,7 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "data_id")
 public class Company extends Data {
     @Column(length = 50)
-    private String nameCompny;
+    private String nameCompany;
     @Column(unique = true)
     private String cuit;
 
@@ -29,9 +29,9 @@ public class Company extends Data {
     )
     Set<Person> people = new HashSet<>();
     @Builder
-    public Company(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String nameCompny, String cuit) {
+    public Company(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String nameCompany, String cuit) {
         super(id, phoneLine, zipCode, address, province, coutry);
-        this.nameCompny=nameCompny;
+        this.nameCompany=nameCompany;
         this.cuit=cuit;
     }
 

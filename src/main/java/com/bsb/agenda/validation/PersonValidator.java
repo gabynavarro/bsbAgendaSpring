@@ -1,7 +1,6 @@
 package com.bsb.agenda.validation;
 
 import com.bsb.agenda.model.entity.Person;
-import com.bsb.agenda.model.request.PersonRequest;
 
 import java.util.regex.Pattern;
 
@@ -37,13 +36,5 @@ public class PersonValidator {
                 validateProvince(person.getPhoneLine())&&
                 validateCountry(person.getCoutry())&&
                 validateCell(person.getCell());
-    }
-    public static boolean validatePerson(PersonRequest request) {
-        return validateFirstName(request.getFirstName()) &&
-                validateLastName(request.getLastName()) &&
-                validateAddress((request.getAddress()))&&
-                validateProvince(request.getPhoneLine())&&
-                validateCountry(request.getCoutry())&&
-                validateCell(request.getCell());
     }
 }

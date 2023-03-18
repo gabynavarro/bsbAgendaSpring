@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor @NoArgsConstructor
 public class CompanyResponse {
     private Long id;
-    private String nameCompny;
+    private String nameCompany;
     private String cuit;
     /* Data*/
     protected String zipCode;
@@ -20,7 +20,7 @@ public class CompanyResponse {
     public static  CompanyResponse toResponse(Company enty){
         return CompanyResponse.builder()
                 .id(enty.getId())
-                .nameCompny(enty.getNameCompny())
+                .nameCompany(enty.getNameCompany())
                 .cuit(enty.getCuit())
                 .zipCode(enty.getZipCode())
                 .address(enty.getAddress())

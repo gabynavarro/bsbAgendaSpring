@@ -9,12 +9,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,10 +21,16 @@ import javax.validation.Valid;
 public class PersonController {
     private final PersonService service;
     @PostMapping
-    @ApiOperation(value = "create new Person", notes = "Return a person type response" )
+    @ApiOperation(value = "Create new Person", notes = "Return a person type response" )
     public ResponseEntity<PersonResponse> personAdd(
             @Valid @RequestBody PersonRequest request) throws ErrorProcessException {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.addPerson(request));
+    }
+    /* search person por lastname, phnoline, province, dni, country*/
+    @GetMapping
+    @ApiOperation(value = "Search filter by matchy", notes = "Returns a list of response type matches" )
+    public ResponseEntity<List<?>> getAll(@RequestParam(required = false, defaultValue = "search") String search) throws ErrorProcessException {
+        return ResponseEntity.ok(service.getAll(search));
     }
 
 }

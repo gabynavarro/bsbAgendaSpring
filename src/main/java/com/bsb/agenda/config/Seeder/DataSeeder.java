@@ -51,7 +51,7 @@ public class DataSeeder {
     private void createCompany() {
         for (int i = 0; i < numRow; i++) {
             Company company = Company.builder()
-                    .nameCompny(faker.company().name())
+                    .nameCompany(faker.company().name())
                     .cuit(faker.number().digits(11))
                     .phoneLine(faker.phoneNumber().phoneNumber())
                     .zipCode(faker.address().zipCode())
