@@ -1,40 +1,22 @@
 package com.bsb.agenda.validation;
 
+import com.bsb.agenda.model.entity.Company;
 import com.bsb.agenda.model.entity.Person;
+import com.bsb.agenda.model.response.company.CompanyPersonResponse;
 
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PersonValidator {
-    public static boolean validateFirstName(String firstName) {
-        return firstName != null && !firstName.trim().isEmpty();
-    }
-    public static boolean validateLastName(String lastName) {
-        return lastName != null && !lastName.trim().isEmpty()&& !lastName.equals("");
-    }
-    public static boolean validateCell(String cell) {
-        if (cell == null || cell.trim().isEmpty()) {
-            return false;
+    public static Set<CompanyPersonResponse> validateCompanyInPerson(Set<Company> companies) {
+        if (companies.isEmpty()) {
+            return new HashSet<>();
         }
-        Pattern cellPattern = Pattern.compile("\\d{10}");
-        return cellPattern.matcher(cell).matches();
-    }
-    public static boolean validateAddress(String address) {
-        return address != null && !address.trim().isEmpty();
-    }
-
-    public static boolean validateProvince(String province) {
-        return province != null && !province.trim().isEmpty();
-    }
-
-    public static boolean validateCountry(String country) {
-        return country != null && !country.trim().isEmpty();
-    }
-    public static boolean validatePerson(Person person) {
-        return validateFirstName(person.getFirstName()) &&
-                validateLastName(person.getLastName()) &&
-                validateAddress((person.getAddress()))&&
-                validateProvince(person.getPhoneLine())&&
-                validateCountry(person.getCoutry())&&
-                validateCell(person.getCell());
+        return companies.stream()
+                .map(CompanyPersonResponse::toResponse)
+                .collect(Collectors.toSet());
     }
 }

@@ -11,5 +11,6 @@ public interface PersonService {
     List<PersonResponse> getAll(String search) throws ErrorProcessException;
     List<PersonResponse> findAll() throws ErrorProcessException;
     PersonResponse findById(Long id) throws ErrorProcessException;
+    PersonResponse addCompanyToPerson(Long person, Long company) throws ErrorProcessException;
 
 }

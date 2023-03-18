@@ -39,4 +39,8 @@ public class CompanyController {
     public ResponseEntity<?> searchById(@PathVariable Long id) throws ErrorProcessException {
         return ResponseEntity.ok(service.findById(id));
     }
+    @PostMapping("/person/{personId}/company/{companyId}")
+    public ResponseEntity<?> addCompanyToPerson(@PathVariable("personId") Long personId, @PathVariable("companyId") Long companyId) throws ErrorProcessException {
+        return ResponseEntity.ok(service.addPersonToCompany(personId, companyId));
+    }
 }

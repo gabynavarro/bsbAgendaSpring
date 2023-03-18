@@ -1,9 +1,12 @@
 package com.bsb.agenda.model.response.company;
 
 import com.bsb.agenda.model.entity.Company;
-import com.bsb.agenda.model.response.person.PersonCampanyResponse;
+import com.bsb.agenda.model.response.person.PersonCompanyResponse;
+import com.bsb.agenda.validation.CompanyValidator;
 import lombok.*;
-import lombok.experimental.Accessors;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter @Setter @Builder
 @AllArgsConstructor @NoArgsConstructor
@@ -16,7 +19,7 @@ public class CompanyResponse {
     private String address;
     private String province;
     private String coutry;
-    private PersonCampanyResponse person;
+    private Set<PersonCompanyResponse> people;
     public static  CompanyResponse toResponse(Company enty){
         return CompanyResponse.builder()
                 .id(enty.getId())
@@ -26,7 +29,7 @@ public class CompanyResponse {
                 .address(enty.getAddress())
                 .province(enty.getProvince())
                 .coutry(enty.getCoutry())
-                //falta relacion;
+
                 .build();
     }
 }

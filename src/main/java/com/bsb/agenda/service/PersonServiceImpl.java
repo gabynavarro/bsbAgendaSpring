@@ -3,9 +3,11 @@ package com.bsb.agenda.service;
 import com.bsb.agenda.exception.BadRequestException;
 import com.bsb.agenda.exception.ErrorProcessException;
 import com.bsb.agenda.exception.NotFoundException;
+import com.bsb.agenda.model.entity.Company;
 import com.bsb.agenda.model.entity.Person;
 import com.bsb.agenda.model.request.PersonRequest;
 import com.bsb.agenda.model.response.person.PersonResponse;
+import com.bsb.agenda.repository.CompanyRepository;
 import com.bsb.agenda.repository.PersonRepository;
 import com.bsb.agenda.service.abs.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 public class PersonServiceImpl implements PersonService {
     private final String ERROR_NOT_FOUND = "An error occurred in the process: ";
     private final PersonRepository personRepository;
+    private final CompanyRepository companyRepository;
 
     @Override
     @Transactional
@@ -69,6 +72,20 @@ public class PersonServiceImpl implements PersonService {
         } catch (RuntimeException e) {
             throw new ErrorProcessException(ERROR_NOT_FOUND + e.getMessage());
         }
+    }
 
+    @Override
+    @Transactional
+    public PersonResponse addCompanyToPerson(Long person, Long company) throws ErrorProcessException {
+        Person p = personRepository.findById(person).orElseThrow(() -> new BadRequestException("Person not found"));
+        Company c = companyRepository.findById(company).orElseThrow(() -> new BadRequestException("Company not foud"));
+        try {
+            c.addPerson(p);
+            p.addCompany(c);
+            companyRepository.save(c);
+            return PersonResponse.toResponse(personRepository.save(p));
+        } catch (RuntimeException e) {
+            throw new ErrorProcessException(ERROR_NOT_FOUND + e.getMessage());
+        }
     }
 }
