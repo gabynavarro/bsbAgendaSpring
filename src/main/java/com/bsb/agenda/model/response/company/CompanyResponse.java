@@ -29,7 +29,7 @@ public class CompanyResponse {
                 .address(enty.getAddress())
                 .province(enty.getProvince())
                 .coutry(enty.getCoutry())
-
+                .people(CompanyValidator.validateCompanyInPerson(enty.getPeople()))
                 .build();
     }
 }

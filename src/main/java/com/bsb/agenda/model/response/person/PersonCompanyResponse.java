@@ -19,6 +19,7 @@ public class PersonCompanyResponse {
     private String coutry;
     public static PersonCompanyResponse toReponse(Person enty) {
     return  PersonCompanyResponse.builder()
+            .id(enty.getId())
             .firstName(enty.getFirstName())
             .lastName(enty.getLastName())
             .cell(enty.getCell())
