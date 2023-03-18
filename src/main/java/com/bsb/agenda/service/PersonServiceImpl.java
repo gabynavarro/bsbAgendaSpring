@@ -2,6 +2,7 @@ package com.bsb.agenda.service;
 
 import com.bsb.agenda.exception.BadRequestException;
 import com.bsb.agenda.exception.ErrorProcessException;
+import com.bsb.agenda.exception.NotFoundException;
 import com.bsb.agenda.model.entity.Person;
 import com.bsb.agenda.model.request.PersonRequest;
 import com.bsb.agenda.model.response.person.PersonResponse;
@@ -43,6 +44,28 @@ public class PersonServiceImpl implements PersonService {
             return personRepository.findAll(specification).stream()
                     .map(PersonResponse::toResponse)
                     .collect(Collectors.toList());
+        } catch (RuntimeException e) {
+            throw new ErrorProcessException(ERROR_NOT_FOUND + e.getMessage());
+        }
+
+    }
+
+    @Override
+    public List<PersonResponse> findAll() throws ErrorProcessException {
+        try {
+            return personRepository.findAll().stream()
+                    .map(PersonResponse::toResponse)
+                    .collect(Collectors.toList());
+        } catch (RuntimeException e) {
+            throw new ErrorProcessException(ERROR_NOT_FOUND + e.getMessage());
+        }
+    }
+
+    @Override
+    public PersonResponse findById(Long id) throws ErrorProcessException {
+        Person p = personRepository.findById(id).orElseThrow(() -> new NotFoundException("the person's id was not found in the database"));
+        try {
+            return PersonResponse.toResponse(p);
         } catch (RuntimeException e) {
             throw new ErrorProcessException(ERROR_NOT_FOUND + e.getMessage());
         }

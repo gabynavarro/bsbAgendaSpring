@@ -29,4 +29,14 @@ public class CompanyController {
     public ResponseEntity<List<?>> getAll(@RequestParam(required = false, defaultValue = "search") String search) throws ErrorProcessException {
         return ResponseEntity.ok(service.getAll(search));
     }
+    @GetMapping("/all")
+    @ApiOperation(value = "Search all companies", notes = "Returns a list of response" )
+    public ResponseEntity<List<?>> searchAll() throws ErrorProcessException {
+        return ResponseEntity.ok(service.searchAll());
+    }
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Search all companies", notes = "Returns a list of response" )
+    public ResponseEntity<?> searchById(@PathVariable Long id) throws ErrorProcessException {
+        return ResponseEntity.ok(service.findById(id));
+    }
 }

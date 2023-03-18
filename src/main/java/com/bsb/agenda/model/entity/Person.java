@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "people")
 @AllArgsConstructor
@@ -26,6 +25,9 @@ public class Person extends Data{
     /* TODO:Relations*/
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "people")
     private Set<Company> companies = new HashSet<>();
+    public void addCompany(Company point){
+        companies.add(point);
+    }
     @Builder
     public Person(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String firstName, String lastName,String dni, String cell) {
         super(id, phoneLine, zipCode, address, province, coutry);

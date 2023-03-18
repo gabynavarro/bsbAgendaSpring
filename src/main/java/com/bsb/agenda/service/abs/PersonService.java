@@ -9,4 +9,7 @@ import java.util.List;
 public interface PersonService {
     PersonResponse addPerson(PersonRequest request) throws ErrorProcessException;
     List<PersonResponse> getAll(String search) throws ErrorProcessException;
+    List<PersonResponse> findAll() throws ErrorProcessException;
+    PersonResponse findById(Long id) throws ErrorProcessException;
+
 }

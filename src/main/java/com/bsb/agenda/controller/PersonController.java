@@ -32,5 +32,14 @@ public class PersonController {
     public ResponseEntity<List<?>> getAll(@RequestParam(required = false, defaultValue = "search") String search) throws ErrorProcessException {
         return ResponseEntity.ok(service.getAll(search));
     }
-
+    @GetMapping("/all")
+    @ApiOperation(value = "Search all people", notes = "Returns a list of response" )
+    public ResponseEntity<List<?>> searchAll() throws ErrorProcessException {
+        return ResponseEntity.ok(service.findAll());
+    }
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Search porson by id", notes = "Returns response type person" )
+    public ResponseEntity<?> findById(@PathVariable Long id) throws ErrorProcessException {
+        return ResponseEntity.ok(service.findById(id));
+    }
 }

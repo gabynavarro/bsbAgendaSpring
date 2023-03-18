@@ -9,4 +9,6 @@ import java.util.List;
 public interface CompanyService {
     CompanyResponse addCompany(CompanyRequest request) throws ErrorProcessException;
     List<CompanyResponse> getAll(String search) throws ErrorProcessException;
+    List<CompanyResponse> searchAll() throws ErrorProcessException;
+    CompanyResponse findById(Long id) throws ErrorProcessException;
 }
