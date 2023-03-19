@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/person")
+@CrossOrigin("*")
 @Api(value = "Person Controller", tags = "Actions allowed for people")
 public class PersonController {
     private final PersonService service;

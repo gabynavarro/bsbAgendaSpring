@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/company")
 @Api(value = "Company Controller", tags = "Actions allowed for companies")
+@CrossOrigin("*")
 public class CompanyController {
     private final CompanyService service;
     @PostMapping

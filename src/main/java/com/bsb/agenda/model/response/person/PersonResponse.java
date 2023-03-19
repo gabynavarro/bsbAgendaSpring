@@ -37,6 +37,11 @@ public class PersonResponse {
     private String cell;
 
     /* Data*/
+    @ApiModelProperty(name = "PhoneLine area person",
+            value = "Phone line area of the person",
+            dataType = "String",
+            example = "2614921040")
+    private String phoneLine;
     @ApiModelProperty(name = "zipcode area person",
             value = "zipcode area of the person",
             dataType = "String",
@@ -67,6 +72,7 @@ public class PersonResponse {
                 .lastName(person.getLastName())
                 .dni(person.getDni())
                 .cell(person.getCell())
+                .phoneLine(person.getPhoneLine())
                 .zipCode(person.getZipCode())
                 .address(person.getAddress())
                 .province(person.getProvince())
