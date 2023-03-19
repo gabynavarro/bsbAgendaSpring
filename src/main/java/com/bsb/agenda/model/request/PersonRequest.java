@@ -113,7 +113,7 @@ public class PersonRequest {
                 .zipCode(request.getZipCode())
                 .address(request.getAddress())
                 .province(request.getProvince())
-                .coutry(request.getCountry())
+                .country(request.getCountry())
                 .dni(request.getDni())
                 .build();
     }

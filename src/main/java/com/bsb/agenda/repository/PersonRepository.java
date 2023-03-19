@@ -19,7 +19,7 @@ public interface PersonRepository extends DataRepository<Person>, JpaSpecificati
             Predicate phoneLinePredicate = cb.like(root.get("phoneLine"), pattern);
             Predicate provincePredicate = cb.like(root.get("province"), pattern);
             Predicate dniPredicate = cb.like(root.get("dni"), pattern);
-            Predicate countryPredicate = cb.like(root.get("coutry"), pattern);
+            Predicate countryPredicate = cb.like(root.get("country"), pattern);
             return cb.or(lastNamePredicate, phoneLinePredicate, provincePredicate, dniPredicate, countryPredicate);
         };
     }

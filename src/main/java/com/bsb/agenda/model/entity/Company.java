@@ -37,8 +37,8 @@ public class Company extends Data {
         people.add(point);
     }
     @Builder
-    public Company(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String nameCompany, String cuit) {
-        super(id, phoneLine, zipCode, address, province, coutry);
+    public Company(Long id, String phoneLine, String zipCode, String address, String province, String country, String nameCompany, String cuit) {
+        super(id, phoneLine, zipCode, address, province, country);
         this.nameCompany=nameCompany;
         this.cuit=cuit;
     }

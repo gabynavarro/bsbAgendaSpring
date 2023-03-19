@@ -94,7 +94,7 @@ public class CompanyRequest {
                 .zipCode(request.getZipCode())
                 .address(request.getAddress())
                 .province(request.getProvince())
-                .coutry(request.getCountry())
+                .country(request.getCountry())
                 .cuit(request.getCuit())
                 .build();
     }

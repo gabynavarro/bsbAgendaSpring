@@ -43,7 +43,7 @@ public class DataSeeder {
                     .zipCode(faker.address().zipCode())
                     .address(faker.address().streetAddress())
                     .province(faker.address().state())
-                    .coutry(faker.address().country())
+                    .country(faker.address().country())
                     .build();
             personRepository.save(p);
         }
@@ -57,7 +57,7 @@ public class DataSeeder {
                     .zipCode(faker.address().zipCode())
                     .address(faker.address().streetAddress())
                     .province(faker.address().state())
-                    .coutry(faker.address().country())
+                    .country(faker.address().country())
                     .build();
             companyRepository.save(company);
         }

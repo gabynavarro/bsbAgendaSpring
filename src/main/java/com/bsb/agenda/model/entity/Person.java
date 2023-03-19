@@ -36,8 +36,8 @@ public class Person extends Data{
         companies.add(point);
     }
     @Builder
-    public Person(Long id, String phoneLine, String zipCode, String address, String province, String coutry, String firstName, String lastName,String dni, String cell) {
-        super(id, phoneLine, zipCode, address, province, coutry);
+    public Person(Long id, String phoneLine, String zipCode, String address, String province, String country, String firstName, String lastName,String dni, String cell) {
+        super(id, phoneLine, zipCode, address, province, country);
         this.firstName=firstName;
         this.lastName=lastName;
         this.dni=dni;
