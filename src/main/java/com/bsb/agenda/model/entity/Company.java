@@ -1,5 +1,7 @@
 package com.bsb.agenda.model.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,9 +15,12 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "data_id")
+@ApiModel("Model Company")
 public class Company extends Data {
+    @ApiModelProperty("Company name or trade name")
     @Column(length = 50)
     private String nameCompany;
+    @ApiModelProperty("Company cuit or rut")
     @Column(unique = true)
     private String cuit;
 

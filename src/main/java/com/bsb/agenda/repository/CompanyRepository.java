@@ -19,7 +19,7 @@ public interface CompanyRepository extends DataRepository<Company>, JpaSpecifica
             Predicate phoneLinePredicate = cb.like(root.get("phoneLine"), pattern);
             Predicate provincePredicate = cb.like(root.get("province"), pattern);
             Predicate cuitPredicate = cb.like(root.get("cuit"), pattern);
-            Predicate countryPredicate = cb.like(root.get("coutry"), pattern);
+            Predicate countryPredicate = cb.like(root.get("country"), pattern);
             return cb.or(nameCompanyPredicate, phoneLinePredicate, provincePredicate, cuitPredicate, countryPredicate);
         };
     }

@@ -3,6 +3,7 @@ package com.bsb.agenda.controller;
 import com.bsb.agenda.exception.ErrorProcessException;
 import com.bsb.agenda.model.request.CompanyRequest;
 import com.bsb.agenda.service.abs.CompanyService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/company")
+@Api(value = "Company Controller", tags = "Actions allowed for companies")
 public class CompanyController {
     private final CompanyService service;
     @PostMapping
@@ -40,6 +42,7 @@ public class CompanyController {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping("/person/{personId}/company/{companyId}")
+    @ApiOperation(value = "Match company with person", notes = "Return company with associated person" )
     public ResponseEntity<?> addCompanyToPerson(@PathVariable("personId") Long personId, @PathVariable("companyId") Long companyId) throws ErrorProcessException {
         return ResponseEntity.ok(service.addPersonToCompany(personId, companyId));
     }

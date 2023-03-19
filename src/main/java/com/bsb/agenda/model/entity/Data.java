@@ -26,5 +26,5 @@ public class Data {
     @Column(length = 70)
     private String province;
     @Column(length = 70)
-    private String coutry;
+    private String country;
 }

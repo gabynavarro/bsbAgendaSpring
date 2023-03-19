@@ -1,5 +1,7 @@
 package com.bsb.agenda.model.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,13 +14,18 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter @Getter
 @PrimaryKeyJoinColumn(name = "data_id")
+@ApiModel("Model Person")
 public class Person extends Data{
+    @ApiModelProperty("Person firstname")
     @Column(length = 50)
     private String firstName;
+    @ApiModelProperty("Person lastname")
     @Column(nullable = false, length = 50)
     private String lastName;
+    @ApiModelProperty("Person dni or cedule")
     @Column(unique = true, length = 13)
     private String dni;
+    @ApiModelProperty("Person phone line or cellphone")
     @Column(length = 30)
     private String cell;
 

@@ -48,6 +48,7 @@ public class PersonController {
     }
 
     @PostMapping("/person/{personId}/company/{companyId}")
+    @ApiOperation(value = "Match person with company", notes = "Return person with associated company" )
     public ResponseEntity<?> addCompanyToPerson(@PathVariable("personId") Long personId, @PathVariable("companyId") Long companyId) throws ErrorProcessException {
         return ResponseEntity.ok(service.addCompanyToPerson(personId, companyId));
     }
