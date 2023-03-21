@@ -27,4 +27,5 @@ Para utilizar la mini agenda, solo debes descargar el repositorio y sus dependen
 Si deseas contribuir al proyecto, puedes hacer un fork y enviar tus cambios mediante un pull request. Todas las contribuciones son bienvenidas.
 
 UML:
+
 <img src="https://github.com/gabynavarro/bsbAgendaSpring/blob/master/utils/diagrama_clases.png"></img>
